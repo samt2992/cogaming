@@ -1,0 +1,13 @@
+.footer{
+	color:rgb(26,24,24);
+	height:80px;
+	width:100%;
+	margin:5px;
+	border-top:2px Solid lightgrey;
+
+}
+.descrip{
+	height:20px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}

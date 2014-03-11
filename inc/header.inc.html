@@ -1,0 +1,90 @@
+<?php
+session_start();
+include('config.inc.php');
+?>
+<!doctype html>
+	<head>
+		<link rel='stylesheet' href='/gaming/css/bootstrap.css'>
+		<link rel='stylesheet' href='/gaming/css/mystyle.css'>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="/gaming/js/bootstrap.js"></script> 
+		<!-- Fancybox -->
+			<!-- Add mousewheel plugin (this is optional) -->
+			<script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+			<!-- Add fancyBox -->
+			<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+			<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+			<!-- Optionally add helpers - button, thumbnail and/or media -->
+			<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+			<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+			<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+			<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+			<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+		
+		<!-- Renders zooming and touch capabilities for mobiles  -->
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		
+		<title><?php echo $pageTitle ?></title>
+
+	</head>
+	<body>
+		
+		<nav class="navbar navbar-default navbar-fixed-top" role="navbar">
+			<!-- Brand and toggle are grouped -->
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle Navigation</span> <!--ScreenReaderOnly -->
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<?php echo BASE_URL ?>home.php">COGaming</a>
+			</div>
+
+			<!-- Collect the forms and stuff for collapsing -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="/gaming/home.php">Home</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Community<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/gaming/collective/topCommunities.php">Top Communties</a></li>
+							<li><a href="/gaming/collective/topGroups.php">Top Groups</a></li>
+							<li><a href='/gaming/collective/createGroup.php'>Create Group</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Games<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Top Games</a></li>
+							<li><a href="#">New Games</a></li>
+							<li><a href='/gaming/users/discover.php'>Discover</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search" action='search.php' method='GET'>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="search" name='keywords'>
+					</div>
+					<button type="submit" class="btn btn-default" name='submit'>Ding!</button>
+					<input type='hidden' name='submitted' value='TRUE'>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+						<li><?php if((isset($_SESSION['userID'])) &&
+							(!strpos($_SERVER['PHP_SELF'],'logout.php'))  )
+							{
+								echo "<a href='/gaming/users/logout.php'>Logout</a>";
+							}else{
+								echo "<a href='/gaming/users/login.php'>Log In</a>";
+																			
+							}?></li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+
